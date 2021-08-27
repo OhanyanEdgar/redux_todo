@@ -1,13 +1,19 @@
 import TodoItem from "./TodoItem"
 
+import { useSelector } from 'react-redux';
 
-const TodoList = ({todos, onDelTodo, onCheckedTodo}) => {
+
+
+const TodoList = () => {
+
+    const todos = useSelector(state => state.todoApp.todos)
+    
     return (
         <div className="todo_list">
             {
                 todos.map(todo => {
                     return (<div key={todo.id}>
-                        <TodoItem onCheckedTodo={onCheckedTodo} onDelTodo={onDelTodo} todo={todo} />
+                        <TodoItem todo={todo} />
                     </div>)
                 })
             }
